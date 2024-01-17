@@ -1,0 +1,30 @@
+layout {
+    tab {
+        pane split_direction="vertical" {
+            pane name="mix config" {
+                command "hx"
+                args "mix.exs"
+            }
+            pane split_direction="horizontal" {
+                pane name="terminal"
+            }        
+        }
+    }
+    tab {
+        pane split_direction="vertical" {
+            pane name="editor" size="50%" focus=true
+            pane split_direction="horizontal" {
+                pane name="repl" {
+                    command "iex"
+                    args "-S" "mix"
+                }
+                pane name="test" size="40%" {
+                    command "mix"
+                    args "test"
+                    start_suspended true
+                }
+                
+            }
+        }
+    }
+}

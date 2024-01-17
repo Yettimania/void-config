@@ -1,0 +1,33 @@
+layout {
+    tab {
+        pane split_direction="vertical" {
+            pane name="git diff" {
+                command "git"
+                args "diff"
+            }
+            pane split_direction="horizontal" {
+                pane name="git log" {
+                    command "git"
+                    args "log"
+                }
+                pane name="terminal"
+            }        
+        }
+    }
+    tab {
+        pane split_direction="vertical" {
+            pane name="vis" size="60%" focus=true
+            pane stacked=true {
+                pane name="test" {
+                    command "testament"
+                    args "cat" "."
+                    start_suspended true
+                }
+                pane name="pkg" {
+                    command "exa" 
+                    args "-L" "2" "--tree"                
+                }
+            }
+        }
+    }
+}
