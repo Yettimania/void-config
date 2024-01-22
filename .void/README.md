@@ -45,7 +45,7 @@ AllowSuspend=yes
 
 Which allows me to put the device asleep with `loginctl suspend`
 
-### Clocking
+### Clock and Datetime
 
 To avoid issues logging into some online provders, the system clock must be correct with the local. I have enabled the `isc-ntpd` service to sync the time with the network.
 
@@ -71,3 +71,15 @@ ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 `wpctl` can then we used to check status and configure output devices with `set-default` 
 
 [Ref Void PipeWire](https://docs.voidlinux.org/config/media/pipewire.html)
+
+### Language LSP
+
+**Elixir**: I downloaded the [elixir-lsp](https://github.com/elixir-lsp/elixir-ls) locally and ran:
+
+```bash
+mix deps.get
+MIX_ENV=prod mix compile
+MIX_ENV=prod mix elixir_ls.release2 -o <release_dir>
+```
+
+The release directory will contain `launch.fish` and `language_server.sh`. The server script is the important one which needs to be set in the users `$PATH`. I created a link to the script in the `.local/bin` which allows helix to be configured to launch the script on elixir projects.
