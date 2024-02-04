@@ -24,6 +24,10 @@ Lastly you can checkout the files.
 
 ## Settings
 
+### NOPASSWD
+
+Rather than editing the `/etc/sudoers` file, I've edited the `/etc/sudoers.d/wheel` with appropriate commands not requiring PASSWD
+
 ### Adjust trackpoint speed
 
 `xinput` lists all the input devices. You can then identify the trackpoint ID and run `xinput list-props <id>`
