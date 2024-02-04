@@ -1,10 +1,12 @@
 starship init fish | source
 
+source ~/.asdf/asdf.fish
+
 set fish_vi_key_bindings
 
 set fish_cursor_default block
 set fish_cursor_insert underscore blink
-set fish_cursoer_visual block
+set fish_cursor_visual block
 
 set fish_greeting "The way you do anything, is the way you do everything."
 
