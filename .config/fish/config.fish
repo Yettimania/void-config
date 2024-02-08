@@ -20,5 +20,5 @@ set -gx READER zathura
 set -gx TERMINAL alacritty
 set -gx BROWSER firefox
 set -gx VIEWER sxiv
-set -gx FILE lf
+set -gx FILE fd
 set -gx TOUCH_STATUS 1
