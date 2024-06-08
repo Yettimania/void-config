@@ -1,4 +1,5 @@
 starship init fish | source
+atuin init fish | source
 
 source ~/.asdf/asdf.fish
 
