@@ -24,6 +24,11 @@ set -gx VIEWER sxiv
 set -gx FILE fd
 set -gx TOUCH_STATUS 1
 
+# System Aliases
+alias e="vim"
+alias ls="exa --icons"
+alias void="/usr/bin/git --git-dir=$HOME/.void/ --work-tree=$HOME $arv"
+
 # Git Aliases
 alias gnb='git checkout -b' # new branch
 alias ga='git add . --all'
