@@ -13,6 +13,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 
 Plug 'godlygeek/tabular'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ryanolsonx/vim-xit'
 Plug 'preservim/vim-markdown'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -114,10 +116,8 @@ highlight SpellLocal term=underline cterm=underline
 " ---------------------------------------------
 " Plugin Configuration
 " ---------------------------------------------
-let g:airline_theme='base16_gruvbox_dark_medium'
+let g:airline_theme='base16_gruvbox_dark_soft'
 let g:airline_powerline_fonts = 0
 let g:slime_target = "tmux"
 let g:ale_completion_enabled = 0
 let g:ale_lint_on_save = 1
-
-
