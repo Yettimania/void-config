@@ -8,8 +8,15 @@
 # If not running interactively, don't do anything
 [[ -n $PS1 ]] || return
 
+# Source tools
+. "$HOME/.asdf/asdf.sh"
+
 # Set environment
+export GPG_TTY=$(tty)
 export EDITOR='vim'
+export READER='zathura'
+export TERMINAL='alacritty'
+export BROWSER='firefox'
 export GREP_COLOR='1;36'
 export HISTCONTROL='ignoredups'
 export HISTSIZE=5000
@@ -18,8 +25,6 @@ export LSCOLORS='GxFxCxDxBxegedabagaced'
 export PAGER='less'
 export TZ='America/Los_Angeles'
 export VISUAL='vim'
-
-# Add this to your .bashrc or .bash_profile
 
 # Support colors in less
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 0) # Black
@@ -38,7 +43,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # PATH
-# path_add ~/bin before
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 
 # Shell Options
 shopt -s cdspell
@@ -51,7 +56,9 @@ shopt -s dirspell 2>/dev/null || true
 
 # Aliases
 alias e='vim'
-
+alias ls="exa --icons"
+alias void="/usr/bin/git --git-dir=$HOME/.void/ --work-tree=$HOME $arv"
+ 
 # Git Aliases
 alias nb='git checkout -b "$USER-$(date +%s)"' # new branch
 alias ga='git add . --all'
@@ -140,25 +147,25 @@ set_prompt_colors() {
 # [(exit code)] <user> - <hostname> <uname> <cwd> [git branch] <$|#>
 
 # exit code of last process
-PS1='$(ret=$?;(($ret!=0)) && echo "\[${COLOR256[0]}\]($ret) \[${COLOR256[256]}\]")'
+PS1='$(ret=$?;(($ret!=0)) && echo "\[${COLOR256[1]}\]($ret) \[${COLOR256[256]}\]")'
 
 # username (red for root)
-PS1+='\[${PROMPT_COLORS[0]}\]\[${COLOR256[257]}\]$(((UID==0)) && echo "\[${COLOR256[0]}\]")\u\[${COLOR256[256]}\] - '
+PS1+='\[${PROMPT_COLORS[0]}\]\[${COLOR256[257]}\]$(((UID==0)) && echo "\[${COLOR256[4]}\]")\u\[${COLOR256[256]}\] - '
 
 # zonename (global zone warning)
 PS1+='\[${COLOR256[0]}\]\[${COLOR256[257]}\]'"$(zonename 2>/dev/null | grep -q '^global$' && echo 'GZ:')"'\[${COLOR256[256]}\]'
 
 # hostname
-PS1+='\[${PROMPT_COLORS[3]}\]\h '
+PS1+='\[${COLOR256[5]}\]\h '
 
 # uname
-PS1+='\[${PROMPT_COLORS[2]}\]'"$(uname | tr '[:upper:]' '[:lower:]')"' '
+# PS1+='\[${COLOR256[3]}\]'"$(uname | tr '[:upper:]' '[:lower:]')"' '
 
 # cwd
-PS1+='\[${PROMPT_COLORS[5]}\]\w '
+PS1+='\[${COLOR256[6]}\]\w '
 
 # optional git branch
-PS1+='$(branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); [[ -n $branch ]] && echo "\[${PROMPT_COLORS[2]}\](\[${PROMPT_COLORS[3]}\]git:$branch\[${PROMPT_COLORS[2]}\]) ")'
+PS1+='$(branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); [[ -n $branch ]] && echo "\[${COLOR256[3]}\](\[${COLOR256[3]}\]git:$branch\[${COLOR256[3]}\]) ")'
 
 # prompt character
 PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
