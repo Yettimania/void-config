@@ -150,13 +150,13 @@ set_prompt_colors() {
 PS1='$(ret=$?;(($ret!=0)) && echo "\[${COLOR256[1]}\]($ret) \[${COLOR256[256]}\]")'
 
 # username (red for root)
-PS1+='\[${PROMPT_COLORS[0]}\]\[${COLOR256[257]}\]$(((UID==0)) && echo "\[${COLOR256[4]}\]")\u\[${COLOR256[256]}\] - '
+PS1+='\[${COLOR256[4]}\]\u\[${COLOR256[256]}\] - '
 
 # zonename (global zone warning)
 PS1+='\[${COLOR256[0]}\]\[${COLOR256[257]}\]'"$(zonename 2>/dev/null | grep -q '^global$' && echo 'GZ:')"'\[${COLOR256[256]}\]'
 
 # hostname
-PS1+='\[${COLOR256[5]}\]\h '
+PS1+='\[${COLOR256[7]}\]\h '
 
 # uname
 # PS1+='\[${COLOR256[3]}\]'"$(uname | tr '[:upper:]' '[:lower:]')"' '
@@ -168,7 +168,7 @@ PS1+='\[${COLOR256[6]}\]\w '
 PS1+='$(branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); [[ -n $branch ]] && echo "\[${COLOR256[3]}\](\[${COLOR256[3]}\]git:$branch\[${COLOR256[3]}\]) ")'
 
 # prompt character
-PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
+PS1+='\[${COLOR256[2]}\]\$\[${COLOR256[256]}\] '
 
 # set the theme
 set_prompt_colors 24

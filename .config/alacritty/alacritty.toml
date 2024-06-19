@@ -27,7 +27,7 @@ blink_interval = 500
 
 [cursor.style]
 blinking = "On"
-shape = "Underline"
+shape = "Block"
 
 [font]
 size = 11
@@ -417,6 +417,3 @@ mods = "Shift"
 
 [selection]
 save_to_clipboard = true
-
-[shell]
-program = "fish"
