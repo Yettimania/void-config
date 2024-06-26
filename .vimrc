@@ -14,6 +14,7 @@ Plug 'morhetz/gruvbox'
 
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-commentary'
 Plug 'ryanolsonx/vim-xit'
 Plug 'preservim/vim-markdown'
 Plug 'jpalardy/vim-slime'
