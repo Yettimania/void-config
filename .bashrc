@@ -42,13 +42,14 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
-# PATH
+# Path
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 
 # Shell Options
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s extglob
+set -o vi
 
 # Bash Version >= 4
 shopt -s autocd   2>/dev/null || true
