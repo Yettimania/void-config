@@ -5,11 +5,9 @@
 # Author: Kyle Snyder
 # License: MIT
 
-# If not running interactively, don't do anything
-[[ -n $PS1 ]] || return
-
 # Source tools
 . "$HOME/.asdf/asdf.sh"
+eval "$(starship init bash)"
 
 # Set environment
 export GPG_TTY=$(tty)
@@ -43,13 +41,16 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # Path
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig-linux-x86_64-0.14.0-dev.1917+ecd5878b7
 
 # Shell Options
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s extglob
 set -o vi
+
+# Bindings
+bind 'TAB:menu-complete'
 
 # Bash Version >= 4
 shopt -s autocd   2>/dev/null || true
@@ -59,6 +60,9 @@ shopt -s dirspell 2>/dev/null || true
 alias e='vim'
 alias ls="exa --icons"
 alias void="/usr/bin/git --git-dir=$HOME/.void/ --work-tree=$HOME $arv"
+alias repo="cd ~/git"
+alias mln="cd ~/git/ml-nerves"
+alias b="cd ~/docs/books"
  
 # Git Aliases
 alias nb='git checkout -b "$USER-$(date +%s)"' # new branch
@@ -144,48 +148,8 @@ set_prompt_colors() {
 	done
 }
 
-# Construct the prompt
-# [(exit code)] <user> - <hostname> <uname> <cwd> [git branch] <$|#>
-
-# exit code of last process
-PS1='$(ret=$?;(($ret!=0)) && echo "\[${COLOR256[1]}\]($ret) \[${COLOR256[256]}\]")'
-
-# username (red for root)
-PS1+='\[${COLOR256[4]}\]\u\[${COLOR256[256]}\] - '
-
-# zonename (global zone warning)
-PS1+='\[${COLOR256[0]}\]\[${COLOR256[257]}\]'"$(zonename 2>/dev/null | grep -q '^global$' && echo 'GZ:')"'\[${COLOR256[256]}\]'
-
-# hostname
-PS1+='\[${COLOR256[7]}\]\h '
-
-# uname
-# PS1+='\[${COLOR256[3]}\]'"$(uname | tr '[:upper:]' '[:lower:]')"' '
-
-# cwd
-PS1+='\[${COLOR256[6]}\]\w '
-
-# optional git branch
-PS1+='$(branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); [[ -n $branch ]] && echo "\[${COLOR256[3]}\](\[${COLOR256[3]}\]git:$branch\[${COLOR256[3]}\]) ")'
-
-# prompt character
-PS1+='\[${COLOR256[2]}\]\$\[${COLOR256[256]}\] '
-
 # set the theme
 set_prompt_colors 24
-
-# Prompt command
-_prompt_command() {
-        local user=$USER
-        local host=${HOSTNAME%%.*}
-        local pwd=${PWD/#$HOME/\~}
-        local ssh=
-        [[ -n $SSH_CLIENT ]] && ssh='[ssh] '
-        printf "\033]0;%s%s@%s:%s\007" "$ssh" "$user" "$host" "$pwd"
-}
-PROMPT_COMMAND=_prompt_command
-
-PROMPT_DIRTRIM=6
 
 # print a colorized diff
 colordiff() {
@@ -219,15 +183,6 @@ colors() {
 		printf "\x1b[38;5;${i}mcolor %d\n" "$i"
 	done
 	tput sgr0
-}
-
-# Copy stdin to the clipboard
-# MIGHT NOT WORK
-copy() {
-	pbcopy 2>/dev/null ||
-	    xsel 2>/dev/null ||
-	    clip.exe
-
 }
 
 # Convert epoch to human readable
@@ -264,15 +219,6 @@ gho() {
 	echo "$url"
 	open "$url"
 }
-
-
-# print lines over X columns (defaults to 80)
-over() {
-	awk -v c="${1:-80}" 'length($0) > c {
-		printf("%4d %s\n", NR, $0);
-	}'
-}
-
 # Load external files
 . ~/.bash_aliases    2>/dev/null || true
 . ~/.bashrc.local    2>/dev/null || true
