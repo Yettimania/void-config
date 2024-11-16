@@ -6,7 +6,6 @@ set nocompatible		" Disable VI Compatibility
 " ---------------------------------------------
 " Init - Plugins
 " ---------------------------------------------
-
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -22,6 +21,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'rust-lang/rust.vim'
+Plug 'ziglang/zig.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'dense-analysis/ale'
 call plug#end()
@@ -30,6 +30,7 @@ call plug#end()
 " Vim Options
 " ---------------------------------------------
 set autoindent 			" Default to indenting files
+set autoread                    " Automatically reload file
 set backspace=indent,eol,start  " Backspace all characters
 set formatoptions-=t		" Don't add line-breaks for lines over 'textwidth'
 set hlsearch			" Highlight search results
@@ -49,6 +50,7 @@ colorscheme gruvbox
 " Abbreviations
 " ---------------------------------------------
 iab <expr> me:: strftime("Author: Kyle Snyder<cr>Date: %B %d, %Y<cr>License: MIT")
+iab <expr> dm strftime("defmodule")
 
 " ---------------------------------------------
 " Aliases
@@ -92,6 +94,10 @@ if has("autocmd")
 	" Python files
 	autocmd BufNewFile,BufReadPre,FileReadPre   *.py   setlocal filetype=python
 	autocmd FileType                            python setlocal sw=4 sts=4 et
+	 
+	" Zig files
+	autocmd BufNewFile,BufReadPre,FileReadPre   *.zig   setlocal filetype=zig
+	autocmd FileType                            zig setlocal sw=4 sts=4 et
 
 	" Markdown files
 	autocmd BufNewFile,BufRead,FileReadPre      *.md,*.markdown setlocal filetype=markdown
@@ -114,7 +120,14 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
+
 " ---------------------------------------------
+" Mappings 
+" ---------------------------------------------
+let mapleader = ","
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>e :e!<CR>
+
 " Plugin Configuration
 " ---------------------------------------------
 let g:airline_theme='base16_gruvbox_dark_soft'
@@ -122,3 +135,4 @@ let g:airline_powerline_fonts = 0
 let g:slime_target = "tmux"
 let g:ale_completion_enabled = 0
 let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
