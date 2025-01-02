@@ -23,14 +23,14 @@ background = "0x282828"
 foreground = "0xebdbb2"
 
 [cursor]
-blink_interval = 500
+blink_interval = 300
 
 [cursor.style]
 blinking = "On"
 shape = "Block"
 
 [font]
-size = 11
+size = 12
 
 [font.bold]
 family = "IntelOneMono"

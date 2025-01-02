@@ -24,9 +24,20 @@ require('packer').startup(function(use)
 
     use 'rust-lang/rust.vim'
     use 'ziglang/zig.vim'
-    use 'elixir-editors/vim-elixir'
+    -- use 'elixir-editors/vim-elixir'
+    use({ "elixir-tools/elixir-tools.nvim", tag = "stable", requires = { "nvim-lua/plenary.nvim" }})
     use 'dense-analysis/ale'
 end)
+
+
+-- ---------------------------------------------
+-- Elixir-Tools Setup 
+-- ---------------------------------------------
+require("elixir").setup({
+  nextls = {enable = false},
+  elixirls = {enable = true},
+  projectionist = {enable = true},
+})
 
 -- ---------------------------------------------
 -- Options
@@ -34,6 +45,7 @@ end)
 vim.opt.autoindent = true
 vim.opt.autoread = true
 vim.opt.backspace = {'indent', 'eol', 'start'}
+vim.opt.cursorline = true
 vim.opt.formatoptions:remove('t')
 vim.opt.hlsearch = true
 vim.opt.startofline = false

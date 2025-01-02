@@ -11,7 +11,7 @@ eval "$(starship init zsh)"
 
 # Set environment
 export GPG_TTY=$(tty)
-export EDITOR='vim'
+export EDITOR='hx'
 export READER='zathura'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
@@ -22,7 +22,7 @@ export HISTFILE=~/.zsh_history
 export LSCOLORS='GxFxCxDxBxegedabagaced'
 export PAGER='less'
 export TZ='America/Los_Angeles'
-export VISUAL='vim'
+export VISUAL='hx'
 
 # Support colors in less
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 0) # Black
@@ -40,12 +40,13 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # Path
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig-linux-x86_64-0.14.0-dev.1917+ecd5878b7
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig-linux-x86_64-0.13.0
 
 # ZSH Options
 setopt autocd
 setopt extendedglob
 setopt correct
+setopt SHARE_HISTORY
 bindkey -v
 
 # Aliases

@@ -1,7 +1,7 @@
 [[language]]
 name = "elixir"
 scope = "source.elixir"
-file-types = ["ex", "exs", "heex"]
+file-types = ["ex", "exs", "hex"]
 roots = ["mix.exs"]
 auto-format = true
 diagnostic-severity = "Hint"
