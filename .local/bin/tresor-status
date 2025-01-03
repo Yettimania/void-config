@@ -6,7 +6,7 @@ STATUS=$(tresorit-cli status | grep 'Tresorit daemon' | awk '{print $3}')
 
 if [ $STATUS = 'running' ]
 then
-    echo up
+    notify-send -t 1500 "Tresorit: up"
 else
-    echo down
+    notify-send -t 1500 "Tresorit: down"
 fi

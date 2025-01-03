@@ -7,6 +7,4 @@ feh --bg-scale ~/pics/backgrounds/gruvbox-linux.png
 
 tresorit-cli start &
 pipewire &
-slstatus &
-
-dbus-run-session dwm
+ratpoison
