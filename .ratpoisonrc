@@ -1,0 +1,42 @@
+// Status
+set winname title
+set wingravity center
+set transgravity center
+set bargravity center
+set border 8
+set font "IntelOneMono:size=16:style=Bold"
+set bgcolor #282828
+set fgcolor #d79921
+
+// Program Key Bindings
+escape Super_L
+bind t exec alacritty
+bind f exec firefox
+bind o exec Obsidian
+bind d exec Discord
+bind c exec rofi -show run
+bind C-D exec display-select
+
+// Vim Bindings
+unkind k
+bind j focusdown
+bind h focusleft
+bind k focusup
+bind l focusright
+
+
+// Status Key Bindings
+bind C-b exec battery
+bind C-t exec tresor-status
+
+// System Key Bindings
+bind Print exec flameshot gui
+bind XF86_AudioMute exec amixer sset Master toggle
+bind XF86_AudioMute exec amixer sset Master toggle
+bind XF86_AudioLowerVolume exec amixer sset Master 5%-
+bind XF86_AudioRaiseVolume exec amixer sset Master 5%+
+bind XF86_AudioMicMute exec amixer sset Capture toggle
+bind XF86_MonBrightnessDown exec xbacklight -dec 10
+bind XF86_MonBrightnessUp exec xbacklight -inc 10
+bind XF86_Display exec slock
+bind C-XF86_Display exec loginctl suspend && slock
