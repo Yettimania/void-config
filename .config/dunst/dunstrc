@@ -1,13 +1,16 @@
 [global]
     # Notification placement
     monitor = 0
-    origin = center
-    offset = "0x0"
-    geometry = "300x50-0+0"
+    origin = top-right
+    offset = "25x25"
+    width = (0,400)
+    height = (50,200)
 
     # Font settings
     font = IntelOneMono Bold 16
     alignment = center
+    max_icon_size = 32
+    icon_path = /home/ksnyder/.local/share/icons/
 
     # Color scheme
     background = "#282828"
@@ -19,3 +22,21 @@
 
     # Padding inside the notification
     padding = 10
+
+    # markup
+    markup = true
+
+[urgency_low]
+    background = "#282828"
+    foreground = "#d79921"
+    timeout = 10
+
+[urgency_normal]
+    background = "#282828"
+    foreground = "#d79921"
+    timeout = 10
+
+[urgency_critical]
+    background = "#cc241d"
+    foreground = "#282828"
+    timeout = 0

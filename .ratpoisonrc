@@ -1,3 +1,7 @@
+// Settings
+set framesels 123456789
+set startupmessage 0
+
 // Status
 set winname title
 set wingravity center
@@ -28,6 +32,7 @@ bind l focusright
 // Status Key Bindings
 bind C-b exec battery
 bind C-t exec tresor-status
+bind C-n exec network
 
 // System Key Bindings
 bind Print exec flameshot gui

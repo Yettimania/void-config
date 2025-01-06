@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#BAT=$(acpi -b | grep -E -o '[0-9][0-9]?%')
-BAT0=$(cat /sys/class/power_supply/BAT0/capacity)
+# BAT=$(acpi -b | grep -E -o '[0-9][0-9]?%')
 # BAT1=$(cat /sys/class/power_supply/BAT1/capacity)
 
+BAT0=$(cat /sys/class/power_supply/BAT0/capacity)
 STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
-notify-send -t 1500 " : ${BAT0}"
+dunstify -t 1500 -i battery "${STATUS} ${BAT0}%"
 
 exit 

@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# This will check tresorit status and output the results to dwm status
+# This will check tresorit status 
+# and output the results to dwm status
 
 STATUS=$(tresorit-cli status | grep 'Tresorit daemon' | awk '{print $3}')
 
 if [ $STATUS = 'running' ]
 then
-    notify-send -t 1500 "Tresorit: up"
+    dunstify -t 1500 -i up-arrow "Tresorit"
 else
-    notify-send -t 1500 "Tresorit: down"
+    dunstify -t 1500 -i down-arrow "Tresorit"
 fi
