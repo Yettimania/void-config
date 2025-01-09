@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if wpa_cli is installed
+if ! command -v wpa_cli &> /dev/null; then
+    echo "wpa_cli is not installed. Please install it and try again."
+    exit 1
+fi
+
+# Get the current network SSID
+SSID=$(wpa_cli status | grep '^ssid=' | cut -d'=' -f2)
+
+# Get the current signal strength (RSSI)
+SIGNAL=$(wpa_cli signal_poll | grep '^RSSI=' | cut -d'=' -f2)
+
+# Check if SSID and SIGNAL are retrieved successfully
+if [ -z "$SSID" ]; then
+    dunstify -t 1500 "No wifi 󰤭"
+    exit 1
+fi
+
+if [ -z "$SIGNAL" ]; then
+    dunstify -t 1500 "No signal"
+    exit 1
+fi
+
+# Display the information
+dunstify -t 1500 -i wifi "${SSID} ${SIGNAL} dBm"

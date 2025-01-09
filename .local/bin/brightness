@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Check if brightnessctl is installed
+if ! command -v brightnessctl &> /dev/null; then
+    echo "Error: brightnessctl is not installed. Please install it first."
+    exit 1
+fi
+
+# Check if arguments are provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <up|down> <value>"
+    exit 1
+fi
+
+# Assign arguments to variables
+DIRECTION=$1
+VALUE=$2
+
+# Validate direction
+if [[ "$DIRECTION" != "up" && "$DIRECTION" != "down" ]]; then
+    echo "Error: First argument must be 'up' or 'down'."
+    exit 1
+fi
+
+# Validate value
+if ! [[ "$VALUE" =~ ^[0-9]+$ ]]; then
+    echo "Error: Second argument must be a numeric value."
+    exit 1
+fi
+
+# Adjust brightness
+if [ "$DIRECTION" == "up" ]; then
+    brightnessctl set +"$VALUE"%
+    # Display the current brightness
+    CURRENT_BRIGHTNESS=$(brightnessctl get)
+    MAX_BRIGHTNESS=$(brightnessctl max)
+    CURRENT_PERCENTAGE=$(( CURRENT_BRIGHTNESS * 100 / MAX_BRIGHTNESS ))
+    dunstify -u low -r 9231 -h int:value:$CURRENT_PERCENTAGE "Brightness"
+elif [ "$DIRECTION" == "down" ]; then
+    brightnessctl set "$VALUE"%-
+    CURRENT_BRIGHTNESS=$(brightnessctl get)
+    MAX_BRIGHTNESS=$(brightnessctl max)
+    CURRENT_PERCENTAGE=$(( CURRENT_BRIGHTNESS * 100 / MAX_BRIGHTNESS ))
+    dunstify -u low -r 9231 -h int:value:$CURRENT_PERCENTAGE "Brightness"
+fi

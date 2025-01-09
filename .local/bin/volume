@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Check if brightnessctl is installed
+if ! command -v amixer &> /dev/null; then
+    echo "Error: amixer is not installed. Please install it first."
+    exit 1
+fi
+
+# Check if arguments are provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <up|down> <value>"
+    exit 1
+fi
+
+# Assign arguments to variables
+DIRECTION=$1
+VALUE=$2
+
+# Validate direction
+if [[ "$DIRECTION" != "up" && "$DIRECTION" != "down" ]]; then
+    echo "Error: First argument must be 'up' or 'down'."
+    exit 1
+fi
+
+# Validate value
+if ! [[ "$VALUE" =~ ^[0-9]+$ ]]; then
+    echo "Error: Second argument must be a numeric value."
+    exit 1
+fi
+
+# Adjust brightness
+if [ "$DIRECTION" == "up" ]; then
+    amixer sset Master "$VALUE"%+
+    CURRENT_VOLUME=$(amixer get Master | grep -oP '\[\d+%\]' | head -n 1 | tr -d '[]%' )
+    dunstify -u low -r 9231 -h int:value:$CURRENT_VOLUME "Volume"
+elif [ "$DIRECTION" == "down" ]; then
+    amixer sset Master "$VALUE"%-
+    CURRENT_VOLUME=$(amixer get Master | grep -oP '\[\d+%\]' | head -n 1 | tr -d '[]%' )
+    dunstify -u low -r 9231 -h int:value:$CURRENT_VOLUME "Volume"
+fi

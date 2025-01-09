@@ -37,11 +37,10 @@ bind C-n exec network
 // System Key Bindings
 bind Print exec flameshot gui
 bind XF86_AudioMute exec amixer sset Master toggle
-bind XF86_AudioMute exec amixer sset Master toggle
-bind XF86_AudioLowerVolume exec amixer sset Master 5%-
-bind XF86_AudioRaiseVolume exec amixer sset Master 5%+
+bind XF86_AudioLowerVolume exec volume down 5
+bind XF86_AudioRaiseVolume exec volume up 5 
 bind XF86_AudioMicMute exec amixer sset Capture toggle
-bind XF86_MonBrightnessDown exec xbacklight -dec 10
-bind XF86_MonBrightnessUp exec xbacklight -inc 10
+bind XF86_MonBrightnessDown exec brightness down 10
+bind XF86_MonBrightnessUp exec brightness up 10
 bind XF86_Display exec slock
 bind C-XF86_Display exec loginctl suspend && slock
