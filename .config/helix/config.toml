@@ -3,11 +3,23 @@ theme = "gruvbox"
 [editor]
 line-number = "relative"
 mouse = false
+rulers =[80]
+
+[editor.statusline]
+left = ["mode", "spinner","file-name"]
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
 
+[editor.soft-wrap]
+enable = true
+max-wrap = 80
+wrap-at-text-width = true
+
 [editor.file-picker]
 hidden = false
+
+[keys.normal.'\']
+space = [''':pipe-to tmux load-buffer - \; paste-buffer -dpr -t '{right-of}' \; send-keys -t '{right-of}' Enter''']

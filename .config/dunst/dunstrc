@@ -2,7 +2,7 @@
     # Notification placement
     monitor = 0
     origin = top-right
-    offset = "25x25"
+    offset = "25x125"
     width = (0,400)
     height = 100
 

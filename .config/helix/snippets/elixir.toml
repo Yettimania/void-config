@@ -1,0 +1,9 @@
+[[snippets]]
+prefix = "dm"
+scope = [ "elixir" ]
+body = '''
+defmodule $1 do
+
+end
+'''
+description = "define module"

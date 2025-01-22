@@ -4,7 +4,92 @@ scope = "source.elixir"
 file-types = ["ex", "exs", "hex"]
 roots = ["mix.exs"]
 auto-format = true
-diagnostic-severity = "Hint"
+diagnostic-severity = "hint"
 comment-token = "#"
 indent = {tab-width = 2, unit = " "}
-language-servers = ["elixir-ls"]
+language-servers = ["elixir-ls","scls"]
+
+[[language]]
+name = "python"
+file-types = ["py"]
+roots = ["pyproject.toml","uv.lock",".venv"]
+auto-format = true
+shebangs = ["python"]
+comment-token = "#"
+indent = {tab-width = 4, unit = " "}
+language-servers = ["pyright","ruff","scls"]
+formatter = { command = "ruff", args = ["format","-"]}
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+except-features = ["format"]
+
+[language-server.pyright.config]
+reportingMissingTypeStubs = true
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "standard"
+autoImportCompletion = true
+autoSearchPaths = true
+useLibraryCodeForTypes = true
+autoImportCompletions = true
+disableTaggedhints = true
+
+[langauge-server.ruff]
+command = "ruff-lsp"
+args = ["server", "--preview"]
+preview = true
+show-fixes = true
+
+[language-server.ruff.confg]
+lineLength = 80
+logLevel = "debug"
+
+[language-server.ruff.analyze]
+detect-string-imports = true
+
+[language-server.ruff.config.settings.lint]
+select = [
+  "E",
+  "F",
+  "W",
+  "B",
+  "I",
+  "RUF",
+  "N",
+  "SIM",
+  "LOG",
+  "ERA",
+  "W",
+  "D",
+  "UP",
+  "ANN",
+  "ASYNC",
+  "S",
+  "RET",
+  "TCH",
+  "ARG",
+  "PTH",
+  "DOC",
+]
+preview = true
+
+[language-server.ruff.config.settings.format]
+preview = true
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+max_completion_items = 100           # set max completion results len for each group: words, snippets, unicode-input
+feature_words = true                 # enable completion by word
+feature_snippets = true              # enable snippets
+snippets_first = true                # completions will return before snippets by default
+snippets_inline_by_word_tail = false # suggest snippets by WORD tail, for example text `xsq|` become `x^2|` when snippet `sq` has body `^2`
+feature_unicode_input = false        # enable "unicode input"
+feature_paths = false                # enable path completion
+feature_citations = false            # enable citation completion (only on `citation` feature enabled)
