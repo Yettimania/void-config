@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+encrypt() {
+	if [ -f "$1" ]; then
+		input="$1"
+		isFile=true
+		f="$1"
+	else
+		tar_output="$1.tar.gz"
+		tar -zcf "$tar_output" "$1"
+		input="$tar_output"
+		isFile=false
+		f="$tar_output"
+	fi
+
+	recipient="$(pass email)"
+	gpg --output "$f.gpg" --encrypt --recipient "$recipient" "$input"
+
+	while true; do
+		read -p "Do you want to delete input? [y/N] " confirm
+
+		case "$confirm" in
+			[Yy])
+				if $isFile; then
+					rm "$1"
+				else
+					rm -rf "$1"
+				fi
+				return 0
+				;;
+			[Nn] | "")
+				return 0
+				;;
+		esac
+	done
+}
+
+encrypt "$1"

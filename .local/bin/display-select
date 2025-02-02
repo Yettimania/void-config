@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+STATE_FILE="/tmp/display_state"
+
+if [ -n "$1" ]; then
+    choice="$1"
+    echo $choice
+else
+    choice=$(printf "dualmonitor\\nlaptop\\nclamshell\\nauto" | rofi -dmenu -p "Select display")
+fi
+
+dualmonitor() { \
+    xrandr --output DP-1 --mode 3840x2160 --scale 0.7x0.7 --left-of eDP-1
+    feh --bg-scale ~/pics/backgrounds/gruvbox-linux.png
+    ratpoison -c restart
+}
+
+# portablemonitor() 
+    # xrandr --output ${MONITORS[2]} --mode 1920x1080 --scale 0.7x0.7 --left-of ${MONITORS[1]}
+    # feh --bg-scale ~/pics/backgrounds/gruvbox-linux.png
+# }
+
+
+laptop() {
+    xrandr --output DP-1 --off
+    xrandr --output eDP-1 --auto
+    feh --bg-scale ~/pics/backgrounds/gruvbox-linux.png
+    ratpoison -c restart
+}
+
+clamshell() {
+    xrandr --output DP-1 --mode 3840x2160 --output eDP-1 --off
+    feh --bg-scale ~/pics/backgrounds/gruvbox-linux.png
+    ratpoison -c restart
+}
+
+toggle() {
+    if [ ! -f "$STATE_FILE" ]; then
+        echo "laptop" > "$STATE_FILE"
+    fi
+
+    # Read current state
+    STATE=$(cat "$STATE_FILE")
+
+    if [ "$STATE" = "laptop" ]; then
+        clamshell
+        echo "clamshell" > $STATE_FILE
+    else
+        laptop
+        echo "laptop" > $STATE_FILE
+    fi
+}
+
+case "$choice" in
+	dualmonitor) dualmonitor && notify-send -t 1500 "Dual Monitor";;
+	laptop) laptop && notify-send -t 1500 "Laptop";;
+	clamshell) clamshell && notify-send -t 1500 "Clamshell";;
+	auto) xrandr --auto && notify-send -t 1500 "Auto";;
+	toggle) toggle && notify-send -t 1500 "Toggle";;
+esac

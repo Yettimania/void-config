@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+decrypt() {
+	input="$1"
+
+	output="${input%.gpg}"
+
+	gpg --output "$output" --decrypt "$input"
+}
+
+decrypt "$1"

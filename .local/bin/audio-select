@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+choice=$(printf "dock\\nbuilt-in" | rofi -dmenu -p "Select audio output")
+
+
+case "$choice" in
+	dock) wpctl set-default 47 && notify-send "Dock";;
+	built-in) wpctl set-default 49 && notify-send "Built-In";;
+esac
