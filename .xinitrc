@@ -1,6 +1,8 @@
 mkdir /run/user/$(id -u)
 chmod 700 /run/user/$(id -u)
 
+echo "laptop" > /tmp/display_state
+
 XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 eval $(dbus-launch)

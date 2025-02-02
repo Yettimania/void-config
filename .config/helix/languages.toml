@@ -10,6 +10,22 @@ indent = {tab-width = 2, unit = " "}
 language-servers = ["elixir-ls","scls"]
 
 [[language]]
+name = "rust"
+scope = "source.rust"
+file-types = ["rs"]
+roots = ["Cargo.toml"]
+auto-format = true
+indent = {tab-width = 4, unit = "t"}
+language-servers = ["rust-analyzer"]
+formatter = { command = "rustfmt"}
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+diagnostics.enable = true
+
+[[language]]
 name = "python"
 file-types = ["py"]
 roots = ["pyproject.toml","uv.lock",".venv"]

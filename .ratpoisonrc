@@ -19,7 +19,7 @@ bind f exec firefox
 bind o exec Obsidian
 bind d exec Discord
 bind c exec rofi -show run
-bind C-D exec display-select
+bind C-D exec display-select toggle
 
 // Vim Bindings
 unkind k
