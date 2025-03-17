@@ -30,7 +30,7 @@ blinking = "On"
 shape = "Block"
 
 [font]
-size = 12
+size = 14
 
 [font.bold]
 family = "IntelOneMono"

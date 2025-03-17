@@ -8,13 +8,14 @@
 # Source tools
 . "$HOME/.asdf/asdf.sh"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # Set environment
 export GPG_TTY=$(tty)
 export EDITOR='hx'
 export READER='zathura'
 export TERMINAL='alacritty'
-export BROWSER='firefox'
+export BROWSER='zen'
 export GREP_COLOR='1;36'
 export HISTSIZE=5000
 export SAVEHIST=5000
@@ -40,7 +41,7 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # Path
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig-linux-x86_64-0.13.0
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig:$HOME/.npm-global/bin
 
 # ZSH Options
 setopt autocd

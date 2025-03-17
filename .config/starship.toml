@@ -29,13 +29,13 @@ truncation_length = 2
 truncation_symbol = "…/"
 
 [rust]
-symbol = ''
+symbol = ' '
 
 [python]
-symbol = ''
+symbol = ' '
 
 [elixir]
-symbol = ''
+symbol = ' '
 
 [zig]
 symbol = '⚡️'

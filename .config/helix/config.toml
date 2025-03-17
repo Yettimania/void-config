@@ -1,9 +1,10 @@
-theme = "gruvbox"
+theme = "gruvbox_custom"
 
 [editor]
 line-number = "relative"
 mouse = false
 rulers =[80]
+cursorline = true
 
 [editor.statusline]
 left = ["mode", "spinner","file-name"]
