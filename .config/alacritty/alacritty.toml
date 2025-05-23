@@ -1,26 +1,44 @@
-[colors.bright]
-black = "0x928374"
-blue = "0x83a598"
-cyan = "0x8ec07c"
-green = "0xb8bb26"
-magenta = "0xd3869b"
-red = "0xfb4934"
-white = "0xebdbb2"
-yellow = "0xfabd2f"
-
-[colors.normal]
-black = "0x282828"
-blue = "0x458588"
-cyan = "0x689d6a"
-green = "0x98971a"
-magenta = "0xb16286"
-red = "0xcc241d"
-white = "0xa89984"
-yellow = "0xd79921"
-
+# Default colors - Updated to PaperColor Light Theme
 [colors.primary]
-background = "0x282828"
-foreground = "0xebdbb2"
+background = '#eeeeee'  # Light cream/off-white background (PaperColor Light)
+foreground = '#3c3c3b'  # Dark gray text for excellent readability
+
+# Normal colors
+[colors.normal]
+black   = '#2c2c2c'     # Dark gray
+red     = '#d7005f'     # Deep pink/magenta
+green   = '#718c00'     # Olive green
+yellow  = '#ff8f01'     # Bright orange
+blue    = '#005f87'     # Deep blue
+magenta = '#6a1e9a'     # Purple
+cyan    = '#3e999f'     # Teal
+white   = '#f8f8f8'     # Off-white
+
+# Bright colors
+[colors.bright]
+black   = '#2c2c2c'     # Same as normal black
+red     = '#ef5251'     # Lighter red
+green   = '#90c94d'     # Bright green
+yellow  = '#ffa000'     # Amber
+blue    = '#4271ae'     # Medium blue
+magenta = '#c774c1'     # Light purple
+cyan    = '#3e999f'     # Same as normal cyan
+white   = '#f5f5f5'     # Very light gray
+
+# Selection colors
+[colors.selection]
+text = '#3c3c3b'        # Dark text on selection
+background = '#c8c8c6'  # Light gray selection background
+
+# Cursor colors
+[colors.cursor]
+text = '#eeeeee'        # Light background
+cursor = '#25c3dc'      # Bright cyan cursor
+
+# Search colors
+[colors.search.matches]
+foreground = '#3c3c3b'  # Dark text
+background = '#ffeb3b'  # Yellow highlight
 
 [cursor]
 blink_interval = 300
