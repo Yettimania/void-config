@@ -1,7 +1,7 @@
 @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
 
 configuration {
-	font: "IntelOneMono Bold 16";
+	font: "Terminus Bold 18";
 	modes: "window,run,ssh,drun";
 	location: 0;
 

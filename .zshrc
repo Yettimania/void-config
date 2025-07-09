@@ -52,7 +52,7 @@ bindkey -v
 
 # Aliases
 alias e='nvim'
-alias ls="exa --icons"
+alias ls="exa"
 alias void="/usr/bin/git --git-dir=$HOME/.void/ --work-tree=$HOME $arv"
 alias repo="cd ~/git"
 alias mln="cd ~/git/ml-nerves"
