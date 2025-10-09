@@ -41,7 +41,7 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # Path
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig:$HOME/.npm-global/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig:$HOME/.npm-global/bin:$HOME/.duckdb/cli/latest:$HOME/.asdf/installs/elixir/1.18.0/.mix/escripts
 
 # ZSH Options
 setopt autocd

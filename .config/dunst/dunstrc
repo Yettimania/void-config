@@ -7,7 +7,7 @@
     height = 100
 
     # Font settings
-    font = IntelOneMono Bold 16
+    font = Terminus Regular 16
     alignment = center
     max_icon_size = 32
     icon_path = /home/ksnyder/.local/share/icons/

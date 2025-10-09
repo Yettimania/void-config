@@ -1,0 +1,107 @@
+ls
+ls | rg 'proj'
+ls | name = 'git'
+exit
+ls
+cd git/
+nu
+ls
+cd
+cd git/ml-nerves/
+cd
+ls
+gs
+ls
+cd
+rg
+sd
+z ml
+bat
+ls
+claude
+ls
+e .zshrc
+ls
+claude
+cd .config/nushell/
+bat .zshrc
+echo 'heloo'
+echo 'hello'
+plugin add nu_plugin_polars
+cargo install nu_plugin_polars
+ls
+claude
+ls
+ls | name *.nu
+ls | where name = *.nu
+where --help
+ls
+cd ..
+cd
+ls
+cd .config/nushell/
+ls
+hx config.nu
+ls
+cd ...
+ls
+use hello
+use hello.nu
+hx scripts/hello.nu
+mv scripts/hello.nu scripts/greetings.nu
+use greetings.nu 
+greetings hello "Kyle"
+cd
+cd ~
+z ..
+cd ../../
+cd ...
+cd downloads/
+cd ..
+z downloads/
+ls
+ls | where --help 
+ls
+ls | where size > 100KB
+parse --help
+cd .config/nushell/scripts/
+ls
+hx numbers.nu
+mv numbers.nu numbers-api.nu
+nu numbers-api.nu 42
+nu numbers-api.nu 1
+http get "http://numbersapi.com/42"
+hx numbers-api.nu
+nu numbers-api.nu 1
+hx numbers-api.nu
+nu numbers-api.nu
+nu numbers-api.nu 1
+ls
+hx greetings.nu
+ls
+hx numbers-api.nu
+ls
+nu numbers-api.nu 1
+http get "https://cat-fact.herokuapp.com/facts"
+ls
+let x = 10
+x * 5
+$x * 5
+hx compute-parallel.nu
+nu compute-parallel.nu
+hx compute-parallel.nu
+nu compute-parallel.nu
+hx compute-parallel.nu
+nu compute-parallel.nu
+hx compute-parallel.nu
+nu compute-parallel.nu
+hx compute-parallel.nu
+nu compute-parallel.nu
+hx compute-parallel.nu
+nu compute-parallel.nu
+hx compute-parallel.nu
+^duckdb
+duckdb
+ls
+gs
+git status
