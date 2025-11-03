@@ -15,7 +15,7 @@ export GPG_TTY=$(tty)
 export EDITOR='hx'
 export READER='zathura'
 export TERMINAL='alacritty'
-export BROWSER='zen'
+export BROWSER='firefox'
 export GREP_COLOR='1;36'
 export HISTSIZE=5000
 export SAVEHIST=5000
@@ -24,6 +24,7 @@ export LSCOLORS='GxFxCxDxBxegedabagaced'
 export PAGER='less'
 export TZ='America/Los_Angeles'
 export VISUAL='hx'
+export motherduck_token=$(pass motherduck)
 
 # Support colors in less
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 0) # Black
@@ -41,7 +42,7 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # Path
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig:$HOME/.npm-global/bin:$HOME/.duckdb/cli/latest:$HOME/.asdf/installs/elixir/1.18.0/.mix/escripts
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/zig:$HOME/.npm-global/bin:$HOME/.duckdb/cli/latest:$HOME/.asdf/installs/elixir/1.18.0/.mix/escripts:$HOME/.local/share/gem/ruby/3.4.0/bin
 
 # ZSH Options
 setopt autocd

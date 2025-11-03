@@ -18,3 +18,4 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 
 # Initialize zoxide
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
+
